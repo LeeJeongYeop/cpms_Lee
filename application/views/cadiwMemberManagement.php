@@ -14,9 +14,10 @@
 			</select>
 		</div>
 		<div id="managementTable">
+
 		</div>
 		<div id="memberInsert">
-		<hr>
+			<hr>
 			<h3>회원 등록</h3>
 			<table id="memberInsertTable">
 				<tr>
@@ -24,6 +25,8 @@
 					<td><input type="text" id="id" name="id"></td>
 					<th>비밀번호</th>
 					<td><input type="text" id="pw" name="pw"></td>
+				</tr>
+				<tr>
 					<th>이름</th>
 					<td><input type="text" id="name" name="name"></td>
 					<th>핸드폰번호</th>
