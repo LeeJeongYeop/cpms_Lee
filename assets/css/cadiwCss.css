@@ -1,0 +1,91 @@
+body{
+	margin: 0px;
+}
+/**************** 메인 ****************/
+#wrap{
+	width: 1000px;
+	margin: 0 auto;
+}
+#header{
+	background-color: rgb(250, 87, 85);
+	border-bottom: 3px solid rgb(229, 157, 157);
+	margin-left:-300px; 
+	height:109px;
+	color:white;
+}
+#nav{
+	display: inline-block;
+	border:1px solid black;
+	width:200px;
+	margin-top:8px;
+	height:500px;
+}
+#logo{
+	position: relative;
+	border: 3px solid white;
+	left: 300px;
+	height: 100px;
+}
+#title{
+	position: relative;
+	left: 630px;
+	height: 100px;
+}
+/**************** 캘린더 ****************/
+#calendar {
+	max-width: 800px;
+	min-width: 800px;
+	height:380px;
+	margin: 0 auto;
+	position: relative;
+	left: 120px;
+	top:-480px;
+}
+.fc-sun{color:red;}
+#noticeView table{
+	border-collapse:collapse;
+	position:relative;
+	left:320px;
+	top: -450px;
+}
+#lectureView table{
+	border-collapse:collapse;
+	position:relative;
+	left:750px;
+	top: -470px;
+}
+
+/**************** 컨텐츠 ****************/
+.contents{
+	position: relative;
+	width: 800px;
+	height: 100px;
+	top: -500px;
+	left: 250px;
+}
+
+/**************** 정보수정 ****************/
+.modify{
+	margin: 0 auto;
+	width: 500px;
+	height: 400px;
+	font-size: 15px;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	text-align: center;
+}
+#modifyBtn{
+	width: 200px;
+	position: relative;
+	left: 480px;
+}
+
+/**************** 회원관리 ****************/
+#managementTable{
+	height: 300px;
+}
+#memberInsert{
+	width: 1000px;
+}
+#memberInsertTable{
+}
