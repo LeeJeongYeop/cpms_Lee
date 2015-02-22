@@ -83,9 +83,10 @@ body{
 /**************** 회원관리 ****************/
 #managementTable{
 	height: 300px;
+	width: 700px;
 }
 #memberInsert{
-	width: 1000px;
+	width: 700px;
 }
 #memberInsertTable{
 }
