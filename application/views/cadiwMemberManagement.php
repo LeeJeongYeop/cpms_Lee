@@ -33,9 +33,9 @@
 					<td><input type="text" id="phone" name="phone"></td>
 				</tr>
 				<tr>
-					<td>대학교</td>
+					<td align="center">대학교</td>
 					<td><input type="text" id="uni" name="uni"></td>
-					<td>권한</td>
+					<td align="center">권한</td>
 					<td><input type="text" id="auth" name="auth"></td>
 				</tr>
 			</table>
