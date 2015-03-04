@@ -63,3 +63,13 @@ function memberInsert(check){
 
 	check.submit();
 }
+
+/**************** jQuery ****************/
+$(function(){
+	$('#grp').change(function(){
+		var grp = $('#grp option:selected').val();
+		$.post("/code/memberList",{grp:grp}, function(data){
+			$('#managementTable').html(data);
+		});
+	});
+});

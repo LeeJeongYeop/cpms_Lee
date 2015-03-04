@@ -4,6 +4,7 @@
 		<form action="/code/memberInsert" method="post">
 			<span>조선택(등록) :</span>	
 			<select name="grp" id="grp">
+				<option value="0">조선택(관리자)</option>
 				<option value="1">1조</option>
 				<option value="2">2조</option>
 				<option value="3">3조</option>
@@ -13,9 +14,9 @@
 				<option value="7">7조</option>
 			</select>
 		</div>
-		<div id="managementTable">
 		<hr>
-		test
+		<div id="managementTable">
+		<!-- 회원 조회 -->
 		</div>
 		<div id="memberInsert">
 			<hr>

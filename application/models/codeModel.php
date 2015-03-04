@@ -27,5 +27,11 @@ class CodeModel extends CI_Model{
 		$this->db->insert('member',$udata);
 	}
 
+	function memberList($grp){
+		$this->db->where('grp', $grp);
+		$data = $this->db->get('member')->result_array();
+
+		return $data;
+	}
 }
 ?>

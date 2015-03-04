@@ -9,9 +9,12 @@ class Code extends CI_Controller{
 		$this->load->library('session');
 	}
 	public function index(){
-
 		$this->load->view('codeIndex');
 	}
+
+	/*************************************/
+	/*            로그인 관련               */
+	/************************************/
 	public function login(){
 		$id=$this->input->post('id');
 		$pw=$this->input->post('pw');
@@ -26,7 +29,7 @@ class Code extends CI_Controller{
 			$data=array(
 				'uid'=>$result[0]->id,
 				'uname'=>$result[0]->name,
-				'ugroup'=>$result[0]->group
+				'ugroup'=>$result[0]->grp
 				);
 			$this->session->set_userdata($data);
 			redirect('/code/cadiw','refresh');
@@ -51,6 +54,9 @@ class Code extends CI_Controller{
 		redirect('/code','location');
 	}
 
+	/*************************************/
+	/*            관리자 정보 수정           */
+	/************************************/
 	public function managerModify(){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
@@ -71,13 +77,16 @@ class Code extends CI_Controller{
 			'name'=>$this->input->post('name'),
 			'phone'=>$this->input->post('phone'),
 			'university'=>$this->input->post('uni'),
-			'group'=>$this->input->post('grp'),
+			'grp'=>$this->input->post('grp'),
 			'authority'=>$this->input->post('auth')
 			);
 		$this->codeModel->managerModifyOk($udata);
 		redirect('/code/cadiw','refresh');
 	}
 	
+	/*************************************/
+	/*             회원 관리               */
+	/************************************/
 	public function memberManagement(){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
@@ -97,11 +106,17 @@ class Code extends CI_Controller{
 			'name'=>$this->input->post('name'),
 			'phone'=>$this->input->post('phone'),
 			'university'=>$this->input->post('uni'),
-			'group'=>$this->input->post('grp'),
+			'grp'=>$this->input->post('grp'),
 			'authority'=>$this->input->post('auth')
 			);
 		$this->codeModel->memberInsert($udata);
 		redirect('/code/memberManagement','refresh');
+	}
+
+	public function memberList(){
+		$grp=$this->input->post('grp');
+		$data['list'] = $this->codeModel->memberList($grp);
+		$this->load->view('cadiwMemberManagementTable', $data);
 	}
 }
 

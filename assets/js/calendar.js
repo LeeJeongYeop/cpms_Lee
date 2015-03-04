@@ -11,7 +11,7 @@
 				height:380,
 				selectable: true,
 				selectHelper: true,
-				insertView: $.post('/index.php/cpms/calendar/calView',function(data){
+				insertView: $.post('/calendar/calView',function(data){
 					
 					a=data.split("<br>")
 				
@@ -50,7 +50,7 @@
 					var title = prompt('내용을 입력하세요','');
 					var eventData;
 					if (title) {
-						$.post('/index.php/cpms/calendar/calInsert',{title:title,start:String(start),end:String(end)},function(data){
+						$.post('/calendar/calInsert',{title:title,start:String(start),end:String(end)},function(data){
 							eventData = {
 								id: data,
 								title: title,
@@ -84,17 +84,17 @@
 			 		end=event.start;
 			 	}
 
-			 	$.post('/index.php/cpms/calendar/calUpdate',{id:event.id,start:String(event.start),end:String(end)})
+			 	$.post('/calendar/calUpdate',{id:event.id,start:String(event.start),end:String(end)})
 
 			 },
 			 eventResize:function(event,jsEvent,ui,view){
 
-			 	$.post('/index.php/cpms/calendar/calUpdate',{id:event.id,start:String(event.start),end:String(event.end)})
+			 	$.post('/calendar/calUpdate',{id:event.id,start:String(event.start),end:String(event.end)})
 			 },
 			 eventClick:function(event,element){
 
 			 	if(confirm('삭제하시겠습니까?')){
-			 		$.post('/index.php/cpms/calendar/calDelete',{id:event.id})
+			 		$.post('/calendar/calDelete',{id:event.id})
 			 		$('#calendar').fullCalendar('removeEvents',event.id);
 			 	}
 			 }
