@@ -110,13 +110,17 @@ class Code extends CI_Controller{
 			'authority'=>$this->input->post('auth')
 			);
 		$this->codeModel->memberInsert($udata);
-		redirect('/code/memberManagement','refresh');
 	}
 
 	public function memberList(){
 		$grp=$this->input->post('grp');
 		$data['list'] = $this->codeModel->memberList($grp);
 		$this->load->view('cadiwMemberManagementTable', $data);
+	}
+
+	public function memberDelete(){
+		$id=$this->input->post('id');
+		$this->codeModel->memberDelete($id);
 	}
 }
 

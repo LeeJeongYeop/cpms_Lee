@@ -18,6 +18,9 @@
 		<th>
 			Authority
 		</th>
+		<th>
+			
+		</th>
 	</tr>
 	<? foreach ($list as $row){ ?>
 	<tr align="center">
@@ -27,6 +30,9 @@
 		<td><? echo $row['university']; ?></td>
 		<td><? echo $row['grp']; ?></td>
 		<td><? echo $row['authority']; ?></td>
+		<td><button>수정</button>&nbsp
+		<button class="deleteBtn" value="<?=$row['id']?>">삭제</button>
+		</td>
 	</tr>
-<? } ?>
+	<? } ?>
 </table>

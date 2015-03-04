@@ -33,5 +33,10 @@ class CodeModel extends CI_Model{
 
 		return $data;
 	}
+
+	function memberDelete($id){
+		$this->db->where('id', $id);
+		$this->db->delete('member');
+	}
 }
 ?>

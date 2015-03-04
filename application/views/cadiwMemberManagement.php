@@ -1,7 +1,7 @@
 <div class="contents">
 	<div id="grpSelect">
 		<h3>회원 조회</h3>
-		<form action="/code/memberInsert" method="post">
+		<form action="/code/memberInsert" id="insertForm" method="post">
 			<span>조선택(등록) :</span>	
 			<select name="grp" id="grp">
 				<option value="0">조선택(관리자)</option>
@@ -42,8 +42,8 @@
 				</tr>
 			</table>
 			<div>
-				<input type="button" value="등록" onclick="memberInsert(this.form)">
-				<input type="reset" value="취소">
+				<input type="button" value="등록" id="insertBtn"/>
+				<input type="button" value="취소" onclick="resetInsertForm(this.form);" />
 			</div>
 		</form>
 	</div>

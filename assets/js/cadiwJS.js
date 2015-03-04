@@ -33,35 +33,14 @@ function managerModify(check){
 
 	check.submit();
 }
-/**************** 회원관리 ****************/
-function memberInsert(check){
-	var id=check.id.value;
-	var pw=check.pw.value;
-	var name=check.name.value;
-	var phone=check.phone.value;
-
-	if(id==""){
-		alert("아이디를 입력하세요.");
-		check.id.focus();
-		return;
-	}
-	if(pw==""){
-		alert("비밀번호를 입력하세요.");
-		check.pw.focus();
-		return;
-	}
-	if(name==""){
-		alert("이름를 입력하세요.");
-		check.name.focus();
-		return;
-	}
-	if(phone==""){
-		alert("핸드폰 번호를 입력하세요.");
-		check.phone.focus();
-		return;
-	}
-
-	check.submit();
+/**************** 회원 관리 ****************/
+function resetInsertForm(check){
+	check.id.value="";
+	check.pw.value="";
+	check.name.value="";
+	check.phone.value="";
+	check.uni.value="";
+	check.auth.value="";
 }
 
 /**************** jQuery ****************/
@@ -70,6 +49,54 @@ $(function(){
 		var grp = $('#grp option:selected').val();
 		$.post("/code/memberList",{grp:grp}, function(data){
 			$('#managementTable').html(data);
+		});
+
+		/**************** 회원 등록 ****************/
+		$('#insertBtn').click(function(){
+			var id = $('#id').val();
+			var pw= $('#pw').val();
+			var name= $('#name').val();
+			var phone= $('#phone').val();
+			if(id==""){
+				alert("아이디를 입력하세요.");
+				check.id.focus();
+				return;
+			}
+			if(pw==""){
+				alert("비밀번호를 입력하세요.");
+				check.pw.focus();
+				return;
+			}
+			if(name==""){
+				alert("이름를 입력하세요.");
+				check.name.focus();
+				return;
+			}
+			if(phone==""){
+				alert("핸드폰 번호를 입력하세요.");
+				check.phone.focus();
+				return;
+			}
+
+			var dataform = $("#insertForm").serialize();
+			var grp = $('#grp option:selected').val();
+			$.post("/code/memberInsert",dataform, function(data){
+				$.post("/code/memberList",{grp:grp}, function(data){
+					$('#managementTable').html(data);
+				});
+			});
+			$("insertForm").reset();
+		});
+	});
+
+	/**************** 회원 삭제 ****************/
+	$(document).on('click', ".deleteBtn", function(){
+		var id= $(event.target).val();
+		var grp = $('#grp option:selected').val();
+		$.post("/code/memberDelete",{id:id}, function(data){
+			$.post("/code/memberList",{grp:grp}, function(data){
+				$('#managementTable').html(data);
+			});
 		});
 	});
 });
