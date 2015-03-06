@@ -12,12 +12,13 @@ class CodeModel extends CI_Model{
 	}
 
 	/*  관리자 정보 수정  */
-	function managerModify($id){
-		$data = $this->db->query(" select * from member where id='$id'")->result();
-		
+	function managerModify($id){  // 회원 본인 정보수정과 같이 사용
+		$this->db->where('id', $id);
+		$data = $this->db->get('member')->result();
+
 		return $data;
 	}
-	function managerModifyOk($udata){
+	function managerModifyOk($udata){  // 회원 본인 정보수정과 같이 사용
 		$this->db->where('id',$udata['id']);
 		$this->db->update('member',$udata);
 	}
@@ -27,6 +28,7 @@ class CodeModel extends CI_Model{
 		$this->db->insert('member',$udata);
 	}
 
+	/*  회원 조회  */
 	function memberList($grp){
 		$this->db->where('grp', $grp);
 		$data = $this->db->get('member')->result_array();
@@ -34,9 +36,23 @@ class CodeModel extends CI_Model{
 		return $data;
 	}
 
+	/*  회원 삭제  */
 	function memberDelete($id){
 		$this->db->where('id', $id);
 		$this->db->delete('member');
+	}
+
+	/*  회원 정보 수정  */
+	function memberModify($id){
+		$this->db->where('id', $id);
+		$data = $this->db->get('member')->result();
+
+		return $data;
+	}
+
+	function memberModifyOk($udata){
+		$this->db->where('id',$udata['id']);
+		$this->db->update('member',$udata);
 	}
 }
 ?>

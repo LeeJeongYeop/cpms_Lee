@@ -1,7 +1,7 @@
 <div class="contents">
 	<div id="grpSelect">
 		<h3>회원 조회</h3>
-		<form action="/code/memberInsert" id="insertForm" method="post">
+		<form id="insertForm" method="post">
 			<span>조선택(등록) :</span>	
 			<select name="grp" id="grp">
 				<option value="0">조선택(관리자)</option>

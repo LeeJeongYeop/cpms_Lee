@@ -18,6 +18,10 @@ $udata=$this->session->all_userdata();
 					?>
 					<td><input type="button" value="정보수정" onclick="location='/code/managerModify'"></td>
 					<?
+				}else{
+					?>
+					<td><input type="button" value="정보수정" onclick="location='/code/modify'"></td>
+					<?
 				}
 				?>
 				<td><a href="/code/logout"><input type="button" value="로그아웃"></a></td>

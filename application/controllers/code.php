@@ -22,10 +22,8 @@ class Code extends CI_Controller{
 		if(count($result)==0){
 			echo "<script>alert('아이디와 비밀번호가 맞지 않습니다!')</script>";
 			echo "<script>location.href='/code'</script>";
-			
 		}
 		else{
-
 			$data=array(
 				'uid'=>$result[0]->id,
 				'uname'=>$result[0]->name,
@@ -35,8 +33,8 @@ class Code extends CI_Controller{
 			redirect('/code/cadiw','refresh');
 		}
 	}
-	public function cadiw(){
 
+	public function cadiw(){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
 			$this->load->view('cadiwHeader');
@@ -44,11 +42,11 @@ class Code extends CI_Controller{
 			$this->load->view('cadiwIndex');
 		}
 		else{
-
 			echo "<script>alert('로그인 해주세요!')</script>";
 			redirect('/code','refresh');
 		}
 	}
+
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect('/code','location');
@@ -70,7 +68,7 @@ class Code extends CI_Controller{
 		}
 	}
 
-	public function managerModifyOk(){
+	public function managerModifyOk(){   // 회원 본인 정보수정과 같이 사용
 		$udata=array(
 			'id'=>$this->input->post('id'),
 			'password'=>$this->input->post('pw_ok'),
@@ -81,6 +79,7 @@ class Code extends CI_Controller{
 			'authority'=>$this->input->post('auth')
 			);
 		$this->codeModel->managerModifyOk($udata);
+		echo "<script>alert('정보수정 완료!')</script>";
 		redirect('/code/cadiw','refresh');
 	}
 	
@@ -122,6 +121,40 @@ class Code extends CI_Controller{
 		$id=$this->input->post('id');
 		$this->codeModel->memberDelete($id);
 	}
-}
 
+	public function memberModify(){
+		$id=$this->input->get('id');
+		$result['udata']=$this->codeModel->memberModify($id);
+		$this->load->view('cadiwMemberManagementModify',$result);
+	}
+
+	public function memberModifyOk(){
+		$udata=array(
+			'id'=>$this->input->post('id'),
+			'password'=>$this->input->post('pw_ok'),
+			'name'=>$this->input->post('name'),
+			'phone'=>$this->input->post('phone'),
+			'university'=>$this->input->post('uni'),
+			'grp'=>$this->input->post('grp'),
+			'authority'=>$this->input->post('auth')
+			);
+		$this->codeModel->memberModifyOk($udata);
+	}
+
+	/*************************************/
+	/*          회원 본인 정보 수정           */
+	/************************************/
+	public function modify(){
+		$udata=$this->session->all_userdata();
+		if(isset($udata['uid'])){
+			$result['udata']=$this->codeModel->managerModify($udata['uid']);
+			$this->load->view('cadiwHeader');
+			$this->load->view('cadiwNav');
+			$this->load->view('cadiwModify',$result);
+		}else{
+			echo "<script>alert('로그인 해주세요!')</script>";
+			redirect('/code','refresh');	
+		}
+	}
+}
 ?>
