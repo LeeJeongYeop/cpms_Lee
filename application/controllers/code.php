@@ -82,7 +82,23 @@ class Code extends CI_Controller{
 		echo "<script>alert('정보수정 완료!')</script>";
 		redirect('/code/cadiw','refresh');
 	}
-	
+
+	/*************************************/
+	/*          회원 본인 정보 수정           */
+	/************************************/
+	public function modify(){
+		$udata=$this->session->all_userdata();
+		if(isset($udata['uid'])){
+			$result['udata']=$this->codeModel->managerModify($udata['uid']);
+			$this->load->view('cadiwHeader');
+			$this->load->view('cadiwNav');
+			$this->load->view('cadiwModify',$result);
+		}else{
+			echo "<script>alert('로그인 해주세요!')</script>";
+			redirect('/code','refresh');	
+		}
+	}
+
 	/*************************************/
 	/*             회원 관리               */
 	/************************************/
@@ -142,18 +158,18 @@ class Code extends CI_Controller{
 	}
 
 	/*************************************/
-	/*          회원 본인 정보 수정           */
+	/*          회원 출석 관리               */
 	/************************************/
-	public function modify(){
+
+	public function managementAttend(){
 		$udata=$this->session->all_userdata();
 		if(isset($udata['uid'])){
-			$result['udata']=$this->codeModel->managerModify($udata['uid']);
 			$this->load->view('cadiwHeader');
 			$this->load->view('cadiwNav');
-			$this->load->view('cadiwModify',$result);
+			$this->load->view('cadiwManagementAttend');
 		}else{
 			echo "<script>alert('로그인 해주세요!')</script>";
-			redirect('/code','refresh');	
+			redirect('/code','refresh');
 		}
 	}
 }

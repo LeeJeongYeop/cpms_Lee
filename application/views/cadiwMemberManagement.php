@@ -16,7 +16,7 @@
 		</div>
 		<hr>
 		<div id="managementTable">
-		<!-- 회원 조회 -->
+			<!-- 회원 조회 -->
 		</div>
 		<div id="memberInsert">
 			<hr>
